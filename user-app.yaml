@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: user-apps
+    path: user-common
     repoURL: https://github.com/wael2000/user-onboarding
     targetRevision: main
   syncPolicy:
