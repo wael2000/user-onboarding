@@ -6,3 +6,13 @@ resources:
 - svc.yaml
 - ns.yaml
 - network-policy.yaml
+patches:
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: USERNAME-ns
+  target:
+    group: project.openshift.io
+    kind: Project
+    name: user-ns
+    version: v1
