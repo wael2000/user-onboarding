@@ -6,6 +6,17 @@ resources:
 - svc.yaml
 - ns.yaml
 - network-policy.yaml
+replacements:
+- source:
+    kind: ConfigMap
+    name: USERNAME-config
+    fieldPath: data.user-ns
+  targets:
+  - select:
+      kind: Project
+      name: USERNAME-ns
+    fieldPaths:
+    - metadata.name
 patches:
 - patch: |-
     - op: replace
