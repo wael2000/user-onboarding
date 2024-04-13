@@ -16,3 +16,15 @@ patches:
     kind: Project
     name: user-ns
     version: v1
+- patch: |-
+    - op: replace
+      path: /metadata/name
+      value: USERNAME-access-dev-env
+    - op: replace
+      path: /metadata/namespace
+      value: USERNAME-ns      
+  target:
+    group: networking.k8s.io
+    kind: NetworkPolicy
+    name: user-access-dev-env
+    version: v1
