@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: access-dev-env
+  name: user-access-dev-env
   namespace: user-ns
 spec:
   podSelector: {}
