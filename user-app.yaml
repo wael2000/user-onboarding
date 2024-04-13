@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: user-USERNAME
+spec:
+  destination:
+    namespace: USERNAME-ns
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: user-apps
+    repoURL: https://github.com/wael2000/user-onboarding
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
