@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     path: user-common
-    repoURL: file:///.
+    repoURL: https://github.com/wael2000/user-onboarding
     targetRevision: main
   syncPolicy:
     syncOptions:
