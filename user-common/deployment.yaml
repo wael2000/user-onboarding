@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: battalion
+  name: battalion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: battalion
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: battalion
+    spec:
+      containers:
+      - image: quay.io/rhdevelopers/bgd:1.0.0
+        name: battalion
+        env:
+        - name: COLOR
+          value: "blue"
+        resources: {}
+---
