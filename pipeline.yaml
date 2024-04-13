@@ -8,9 +8,9 @@ spec:
       description: username
       name: username
       type: string
-    - default: user
+    - default: janus-argocd
       description: namespace
-      name: ns
+      name: gitops-ns
       type: string
   tasks:
     - name: git-clone
@@ -70,7 +70,7 @@ spec:
         - name: SCRIPT
           value: >-
             oc label ns $(params.username)-ns
-            argocd.argoproj.io/managed-by=janus-argocd
+            argocd.argoproj.io/managed-by=$(params.gitops-ns)
         - name: VERSION
           value: latest
       runAfter:
@@ -86,7 +86,7 @@ spec:
         - name: SCRIPT
           value: >-
             sed 's/USERNAME/$(params.username)/g'
-            user-app.yaml | oc create -f - -n $(params.ns)
+            user-app.yaml | oc create -f - -n $(params.gitops-ns)
         - name: VERSION
           value: latest
       runAfter:
