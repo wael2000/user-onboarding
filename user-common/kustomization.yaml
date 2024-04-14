@@ -9,33 +9,24 @@ resources:
 replacements:
 - source:
     kind: ConfigMap
-    name: USERNAME-config
+    name: user-config
     fieldPath: data.user-ns
   targets:
   - select:
+      group: project.openshift.io
       kind: Project
-      name: USERNAME-ns
+      version: v1
     fieldPaths:
     - metadata.name
-patches:
-- patch: |-
-    - op: replace
-      path: /metadata/name
-      value: USERNAME-ns
-  target:
-    group: project.openshift.io
-    kind: Project
-    name: user-ns
-    version: v1
-- patch: |-
-    - op: replace
-      path: /metadata/name
-      value: USERNAME-access-dev-env
-    - op: replace
-      path: /metadata/namespace
-      value: USERNAME-ns      
-  target:
-    group: networking.k8s.io
-    kind: NetworkPolicy
-    name: user-access-dev-env
-    version: v1
+- source:
+    kind: ConfigMap
+    name: user-config
+    fieldPath: data.user-network-policy
+  targets:
+  - select:
+      group: networking.k8s.io
+      kind: NetworkPolicy
+      name: user-access-dev-env
+      version: v1
+    fieldPaths:
+    - /metadata/name
