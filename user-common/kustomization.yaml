@@ -9,6 +9,7 @@ resources:
 replacements:
 - source:
     kind: ConfigMap
+    version: v1
     name: user-config
     fieldPath: data.user-ns
   targets:
@@ -20,6 +21,7 @@ replacements:
     - metadata.name
 - source:
     kind: ConfigMap
+    version: v1
     name: user-config
     fieldPath: data.user-network-policy
   targets:
